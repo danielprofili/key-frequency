@@ -19,13 +19,20 @@ import logging
 import signal
 import sys
 import matplotlib.pyplot as plt
+import argparse
+
+# Parse args
+parser = argparse.ArgumentParser(description='Log keypresses (with consent!)')
+parser.add_argument('logfile', default='keys.log',
+                    help='Filename of the log file')
+args = parser.parse_args()
 
 # Initialize variables
 global armed
 armed = False
 buffer = dict()
 modifiers = ['Key.alt', 'Key.cmd', 'Key.ctrl', 'Key.shift']
-log_file = 'key_log.txt'
+log_file = args.logfile
 
 # Resets the log file, apparently?
 with open(log_file, 'w'):
