@@ -1,5 +1,5 @@
 """Simple background keylogger.
-Author: Joe Vinciguerra
+Author: Joe Vinciguerra, danielprofili
 Date: 2020.06.15
 This program will run in the background and record keystrokes to a text
 file. The intended purpose is to study personal key usage for optimizing
@@ -9,8 +9,8 @@ of the keyboard operator.
 Requires:
     pynut
     logging
+    matplotlib
 """
-
 
 # Import required modules
 from pynput import keyboard
@@ -18,6 +18,7 @@ import logging
 # for handling ctrl-c
 import signal
 import sys
+import matplotlib.pyplot as plt
 
 # Initialize variables
 global armed
