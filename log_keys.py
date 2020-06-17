@@ -26,6 +26,7 @@ buffer = dict()
 modifiers = ['Key.alt', 'Key.cmd', 'Key.ctrl', 'Key.shift']
 log_file = 'key_log.txt'
 
+# Resets the log file, apparently?
 with open(log_file, 'w'):
     pass
 
@@ -84,12 +85,15 @@ def on_release(key):
     armed = False
 
 
+# Interrupt handler
 def signal_handler(signal, frame):
     print("\ntest")
     buffer.clear()
     sys.exit(0)
 
+# Register interrupt handler
 signal.signal(signal.SIGINT, signal_handler)
+
 # Run the keyboard listener thread
 with keyboard.Listener(
         on_press=on_press,
