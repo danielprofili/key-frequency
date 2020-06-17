@@ -23,7 +23,7 @@ import argparse
 
 # Parse args
 parser = argparse.ArgumentParser(description='Log keypresses (with consent!)')
-parser.add_argument('logfile', default='keys.log',
+parser.add_argument('--logfile', '-l', default='keys.log',
                     help='Filename of the log file')
 args = parser.parse_args()
 
@@ -34,9 +34,9 @@ buffer = dict()
 modifiers = ['Key.alt', 'Key.cmd', 'Key.ctrl', 'Key.shift']
 log_file = args.logfile
 
-# Resets the log file, apparently?
-with open(log_file, 'w'):
-    pass
+# # Resets the log file, apparently?
+# with open(log_file, 'w'):
+#     pass
 
 # Configure logging
 logging.basicConfig(
@@ -95,7 +95,6 @@ def on_release(key):
 
 # Interrupt handler
 def signal_handler(signal, frame):
-    print("\ntest")
     buffer.clear()
     sys.exit(0)
 
