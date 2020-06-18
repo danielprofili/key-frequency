@@ -88,7 +88,7 @@ def on_release(key):
     if not isinstance(key_released, str):
         key_released = str(key_released)
     # Remove released keys from dictionary
-    buffer.pop(key_released)
+    buffer.pop(key_released, None)
     # Unarm if the last event was a "release"
     armed = False
 
